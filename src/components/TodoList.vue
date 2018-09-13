@@ -14,13 +14,7 @@
 				</v-toolbar>
 
 				<v-list two-line class="lists">
-					<v-list-tile
-					v-for="todo in tasksToDo"
-					:key="todo.title"
-					@click=""
-					>
-					{{todo.title}}
-					</v-list-tile>
+					<TodoItem v-for="todo in tasksToDo" :todo="todo"></TodoItem>
 				</v-list>
 			</v-card>
 		</v-flex>
@@ -29,9 +23,13 @@
 
 <script>
 import gql from 'graphql-tag'
+import TodoItem from './TodoItem.vue'
+
 export default {
 	name: 'todo-list',
-
+	components: {
+		TodoItem,
+	},
 	data () {
 		return {
 			allTodos: []
